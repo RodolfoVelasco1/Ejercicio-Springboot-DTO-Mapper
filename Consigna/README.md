@@ -2,7 +2,7 @@
 
 ## 🎯 Objetivo Principal
 
-Crear una **API REST en Spring Boot** para gestionar las películas de un servicio de Streaming, utilizando **DTOs** para exponer solo los datos necesarios al cliente, y un **mapper** para la conversión entre la entidad y el DTO.
+Crear una **API REST en Spring Boot** para gestionar las películas de un servicio de Streaming, utilizando **DTOs** para exponer solo los datos necesarios al cliente, y un **mapper** para la conversión entre capas.
 Se aconseja la utilización de un DTO para cargar nuevas películas con toda su información correspondiente, y otro DTO que permita al usuario obtener solo la información necesaria de las películas.
 
 ## 🛠️ Requerimientos Técnicos
