@@ -1,6 +1,6 @@
 # 🎬 API REST de Películas
 
-API REST desarrollada en Spring Boot para la gestión de películas de un servicio de streaming, implementa operaciones básicas de consulta y creación de películas, DTOs para exponer solo los datos necesarios al cliente, y mappers para la conversión entre entidades y DTOs. 
+API REST desarrollada en Spring Boot para la gestión de películas de un servicio de streaming, implementa operaciones básicas de consulta y creación de películas, DTOs para exponer solo los datos necesarios al cliente, y mappers para la conversión entre capas. 
 
 Este proyecto se desarrolló para estudiantes de la Tecnicatura Universitaria en Programación de la **Universidad Tecnológica Nacional (UTN)**.
 
@@ -49,37 +49,37 @@ Este proyecto demuestra la aplicación práctica de:
 
 ## 🏛️ Arquitectura en Capas
 
-Controller: Manejo de peticiones HTTP y endpoints REST
+**Controller:** Manejo de peticiones HTTP y endpoints REST
 
-Service: Lógica de negocio y procesamiento de datos
+**Service:** Lógica de negocio y procesamiento de datos
 
-Repository: Acceso a datos con Spring Data JPA
+**Repository:** Acceso a datos con Spring Data JPA
 
-Entity: Modelo de dominio con anotaciones JPA
+**Entity:** Modelo de dominio con anotaciones JPA
 
 ## 📦 Patrón DTO (Data Transfer Object)
 
-Separación de responsabilidades: Los DTOs encapsulan solo los datos necesarios para cada operación
+Separación de responsabilidades: Los DTOs encapsulan solo los datos necesarios para cada operación. Se recomienda:
 
-MovieCreateDTO: Contiene todos los campos para crear una película
+- Un DTO que contenga todos los campos para crear una película
 
-MovieResponseDTO: Expone solo información básica al cliente
+- Un DTO que exponga solo información básica al cliente
 
 ## 🔄 Mapper Pattern
 
-Conversión limpia entre capas: Métodos estáticos para convertir entre Entity y DTO
+**Conversión limpia entre capas:** Métodos estáticos para convertir entre Entity y DTO
 
-Separación de lógica: El mapper mantiene la lógica de conversión centralizada
+**Separación de lógica:** El mapper mantiene la lógica de conversión centralizada
 
-Reutilización: Los métodos del mapper se pueden usar en diferentes partes del código
+**Reutilización:** Los métodos del mapper se pueden usar en diferentes partes del código
 
 ## 🗃️ Spring Data JPA
 
-Repository automático: Hereda métodos CRUD básicos de JpaRepository
+**Repository automático:** Hereda métodos CRUD básicos de JpaRepository
 
-Configuración por convención: Uso de anotaciones JPA estándar
+**Configuración por convención:** Uso de anotaciones JPA estándar
 
-Gestión automática de transacciones
+**Gestión automática de transacciones**
 
 ## 🌐 API REST
 
@@ -94,4 +94,4 @@ Rodolfo Nicolás Velasco Fessler
 
 Estudiante de Tecnicatura Universitaria en Programación
 
-Universidad Tecnológica Nacional (UTN)
+**Universidad Tecnológica Nacional (UTN)**
