@@ -137,9 +137,6 @@
 #### Status Code: `200 OK`
 
 #### Si el ID no existe:
-```json
-RuntimeException: Película no encontrada con ID: 999
-```
 #### Status Code: `500 Internal Server Error`
 
 ## 📝 Notas Importantes
