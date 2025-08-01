@@ -27,9 +27,9 @@ com.example/
 ### 📦 Patrón DTO (Data Transfer Object)
 
 - Crear DTOs específicos para diferentes operaciones:
-  - **MovieCreateDTO**: Para crear nuevas películas
-  - **MovieUpdateDTO**: Para actualizar películas existentes  
-  - **MovieResponseDTO**: Para respuestas al cliente
+  - Para crear nuevas películas
+  - Para actualizar películas existentes  
+  - Para respuestas al cliente
 - Exponer solo los datos necesarios en cada endpoint
 - Separar el modelo interno de la API pública
 
