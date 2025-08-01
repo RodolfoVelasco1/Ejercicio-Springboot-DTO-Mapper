@@ -26,6 +26,8 @@
 | `POST` | `/movies` | Crear nueva película |
 | `GET` | `/movies` | Obtener todas las películas |
 | `GET` | `/movies/{id}` | Obtener película por ID |
+| `PUT` | `/movies/{id}` | Actualizar película existente |
+| `DELETE` | `/movies/{id}` | Eliminar película |
 
 ## 🧪 Guía de Pruebas con Postman
 
@@ -46,9 +48,8 @@
   "releaseYear": 1977,
   "director": "George Lucas",
   "durationInMinutes": 121,
-  "description": "Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee and two droids to save the galaxy from the Empire's world-destroying battle station."
+  "description": "A young boy, Luke Skywalker, teams up with a wise Jedi, a young pilot, a hairy Wookiee, and two robots. Together, they must save the galaxy from an evil empire's giant space weapon.
 }
-
 ```
 
 #### Respuesta Esperada:
@@ -73,9 +74,8 @@
   "releaseYear": 1972,
   "director": "Francis Ford Coppola",
   "durationInMinutes": 175,
-  "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son."
+  "description": "An old crime boss gives control of his secret empire to his son."
 }
-
 ```
 
 #### Respuesta Esperada:
@@ -139,9 +139,100 @@
 #### Si el ID no existe:
 #### Status Code: `500 Internal Server Error`
 
+---
+
+### ✏️ 4. Actualizar Película (PUT)
+
+#### Configuración en Postman:
+- **Método**: `PUT`
+- **URL**: `http://localhost:8080/movies/1`
+- **Headers**: 
+  - `Content-Type: application/json`
+
+#### Body (raw JSON):
+```json
+{
+  "title": "Star Wars 4 (Updated)",
+  "genre": "Sci-Fi Adventure",
+  "releaseYear": 1977,
+  "director": "George Lucas",
+  "durationInMinutes": 121,
+  "description": "Updated description: Luke Skywalker begins a journey that will change the galaxy forever."
+}
+```
+
+#### Respuesta Esperada:
+```json
+{
+  "id": 1,
+  "title": "Star Wars 4 (Updated)",
+  "genre": "Sci-Fi Adventure"
+}
+```
+
+#### Status Code: `200 OK`
+
+#### Si el ID no existe:
+#### Status Code: `500 Internal Server Error`
+
+---
+
+### 🗑️ 5. Eliminar Película (DELETE)
+
+#### Configuración en Postman:
+- **Método**: `DELETE`
+- **URL**: `http://localhost:8080/movies/1`
+- **Headers**: No requeridos
+
+#### Respuesta Esperada:
+
+#### Status Code: `200 OK`
+
+#### Si el ID no existe:
+#### Status Code: `500 Internal Server Error`
+
+---
+
+## 🔄 Flujo de Pruebas Completo
+
+### Secuencia Recomendada:
+
+1. **POST** - Crear 2-3 películas
+2. **GET ALL** - Verificar que se crearon correctamente
+3. **GET BY ID** - Consultar una película específica
+4. **PUT** - Actualizar una película existente
+5. **GET BY ID** - Verificar que se actualizó correctamente
+6. **DELETE** - Eliminar una película
+7. **GET ALL** - Verificar que se eliminó correctamente
+
 ## 📝 Notas Importantes
 
 - **Persistencia**: Los datos se pierden al reiniciar la aplicación (H2 en memoria)
 - **IDs**: Se generan automáticamente comenzando desde 1
-- **DTOs**: Las respuestas solo muestran información básica, no todos los campos de la entidad
-- **Errores**: La aplicación actual no tiene manejo sofisticado de errores (retorna 500 para IDs inexistentes)
+- **DTOs**: Las respuestas solo muestran información básica (id, title, genre)
+- **Errores**: La aplicación retorna 500 para IDs inexistentes
+- **Actualización**: PUT requiere enviar todos los campos, funciona como reemplazo completo
+- **Eliminación**: DELETE es irreversible, elimina permanentemente la película
+
+## 🛠️ Estructura de DTOs
+
+### MovieCreateDTO / MovieUpdateDTO
+```json
+{
+  "title": "string",
+  "genre": "string", 
+  "releaseYear": "integer",
+  "director": "string",
+  "durationInMinutes": "integer",
+  "description": "string"
+}
+```
+
+### MovieResponseDTO
+```json
+{
+  "id": "long",
+  "title": "string",
+  "genre": "string"
+}
+```

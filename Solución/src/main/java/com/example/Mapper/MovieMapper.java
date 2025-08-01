@@ -2,6 +2,7 @@ package com.example.Mapper;
 
 import com.example.DTO.MovieCreateDTO;
 import com.example.DTO.MovieResponseDTO;
+import com.example.DTO.MovieUpdateDTO;
 import com.example.Entity.Movie;
 
 public class MovieMapper {
@@ -23,5 +24,14 @@ public class MovieMapper {
         movie.setDurationInMinutes(dto.getDurationInMinutes());
         movie.setDescription(dto.getDescription());
         return movie;
+    }
+
+    public static void updateEntity(Movie movie, MovieUpdateDTO dto) {
+        movie.setTitle(dto.getTitle());
+        movie.setGenre(dto.getGenre());
+        movie.setReleaseYear(dto.getReleaseYear());
+        movie.setDirector(dto.getDirector());
+        movie.setDurationInMinutes(dto.getDurationInMinutes());
+        movie.setDescription(dto.getDescription());
     }
 }

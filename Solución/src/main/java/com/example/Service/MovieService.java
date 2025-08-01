@@ -2,6 +2,7 @@ package com.example.Service;
 
 import com.example.DTO.MovieCreateDTO;
 import com.example.DTO.MovieResponseDTO;
+import com.example.DTO.MovieUpdateDTO;
 import com.example.Entity.Movie;
 import com.example.Mapper.MovieMapper;
 import com.example.Repository.MovieRepository;
@@ -35,5 +36,21 @@ public class MovieService {
         Movie movie = MovieMapper.toEntity(createDTO);
         Movie savedMovie = movieRepository.save(movie);
         return MovieMapper.toResponseDTO(savedMovie);
+    }
+
+    public MovieResponseDTO updateMovie(Long id, MovieUpdateDTO updateDTO) {
+        Movie movie = movieRepository.findById(id).orElseThrow(
+                () -> new RuntimeException("Película no encontrada con ID: " + id)
+        );
+        MovieMapper.updateEntity(movie, updateDTO);
+        Movie updatedMovie = movieRepository.save(movie);
+        return MovieMapper.toResponseDTO(updatedMovie);
+    }
+
+    public void deleteMovie(Long id) {
+        if (!movieRepository.existsById(id)) {
+            throw new RuntimeException("Película no encontrada con ID: " + id);
+        }
+        movieRepository.deleteById(id);
     }
 }
