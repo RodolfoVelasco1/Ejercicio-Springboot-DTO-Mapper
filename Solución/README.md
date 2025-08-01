@@ -8,6 +8,12 @@
 
 ## 🚀 Configuración Inicial
 
+### ⚙️ Requisitos Previos
+
+- Java 17+
+- Maven 3.6+
+- IDE (IntelliJ IDEA, Eclipse, VS Code)
+
 ### ⚙️ Ejecutar el Proyecto
 
 1. **Clonar y abrir el proyecto en tu IDE**
@@ -48,7 +54,7 @@
   "releaseYear": 1977,
   "director": "George Lucas",
   "durationInMinutes": 121,
-  "description": "A young boy, Luke Skywalker, teams up with a wise Jedi, a young pilot, a hairy Wookiee, and two robots. Together, they must save the galaxy from an evil empire's giant space weapon.
+  "description": "Luke Skywalker, teams up with a wise Jedi, a young pilot, a hairy Wookiee, and two robots. Together, they must save the galaxy".
 }
 ```
 
@@ -205,6 +211,60 @@
 6. **DELETE** - Eliminar una película
 7. **GET ALL** - Verificar que se eliminó correctamente
 
+## 📦 Patrón DTO Implementado
+
+### 🔄 DTOs por Operación
+
+- **MovieCreateDTO**: Contiene todos los campos necesarios para crear una película
+- **MovieUpdateDTO**: Contiene todos los campos para actualizar una película existente  
+- **MovieResponseDTO**: Expone solo información básica (id, title, genre) al cliente
+
+### 🎯 Beneficios del Patrón DTO
+
+- **Separación de responsabilidades**: Los DTOs encapsulan solo los datos necesarios
+- **Seguridad**: No expone campos internos de la entidad
+- **Flexibilidad**: Diferentes DTOs para diferentes operaciones
+- **Optimización**: Reduce la transferencia de datos innecesarios
+
+## 🔄 Mapper Pattern
+
+### 📋 Métodos Implementados
+
+- `toResponseDTO(Movie)`: Convierte Entity a DTO de respuesta
+- `toEntity(MovieCreateDTO)`: Convierte DTO de creación a Entity
+- `updateEntity(Movie, MovieUpdateDTO)`: Actualiza Entity existente con datos del DTO
+
+### ✅ Ventajas
+
+- **Conversión limpia**: Métodos estáticos centralizados
+- **Reutilización**: Mismo mapper para diferentes operaciones
+- **Mantenibilidad**: Lógica de conversión en un solo lugar
+
+## 🗃️ Persistencia de Datos
+
+### 🏪 Spring Data JPA
+
+- **Repository automático**: Hereda métodos CRUD de JpaRepository
+- **Métodos adicionales**: `existsById()` para validaciones
+- **Configuración por convención**: Anotaciones JPA estándar
+- **Base de datos H2**: En memoria para desarrollo y pruebas
+
+### 📊 Modelo de Entidad
+
+```java
+@Entity
+public class Movie {
+    @Id @GeneratedValue
+    private Long id;
+    private String title;
+    private String genre;
+    private int releaseYear;
+    private String director;
+    private int durationInMinutes;
+    private String description;
+}
+```
+
 ## 📝 Notas Importantes
 
 - **Persistencia**: Los datos se pierden al reiniciar la aplicación (H2 en memoria)
@@ -213,26 +273,3 @@
 - **Errores**: La aplicación retorna 500 para IDs inexistentes
 - **Actualización**: PUT requiere enviar todos los campos, funciona como reemplazo completo
 - **Eliminación**: DELETE es irreversible, elimina permanentemente la película
-
-## 🛠️ Estructura de DTOs
-
-### MovieCreateDTO / MovieUpdateDTO
-```json
-{
-  "title": "string",
-  "genre": "string", 
-  "releaseYear": "integer",
-  "director": "string",
-  "durationInMinutes": "integer",
-  "description": "string"
-}
-```
-
-### MovieResponseDTO
-```json
-{
-  "id": "long",
-  "title": "string",
-  "genre": "string"
-}
-```

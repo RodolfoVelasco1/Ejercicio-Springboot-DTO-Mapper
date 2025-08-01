@@ -4,7 +4,7 @@
 
 Crear una **API REST completa en Spring Boot** para gestionar las películas de un servicio de Streaming, implementando todas las operaciones CRUD (Create, Read, Update, Delete), utilizando **DTOs** para exponer solo los datos necesarios al cliente, y un **mapper** para la conversión entre capas.
 
-Se debe implementar un DTO para cargar nuevas películas con toda su información correspondiente, otro DTO para actualizar películas existentes, y un DTO de respuesta que permita al usuario obtener solo la información necesaria de las películas.
+Se sugiere implementar un DTO para cargar nuevas películas con toda su información correspondiente, otro DTO para actualizar películas existentes, y un DTO de respuesta que permita al usuario obtener solo la información necesaria de las películas.
 
 ## 🛠️ Requerimientos Técnicos
 
@@ -101,7 +101,6 @@ El proyecto debe permitir:
 ### Consideraciones Técnicas:
 - **Usar ResponseEntity** para mejor control de respuestas HTTP
 - **Validar existencia** antes de actualizar/eliminar
-- **Manejo de excepciones** básico con RuntimeException
 - **Métodos del mapper** específicos para cada tipo de conversión
 
 ## 🎓 Conceptos de Aprendizaje
@@ -121,13 +120,3 @@ Al completar este ejercicio, habrás aplicado:
 **Tiempo estimado**: 6-8 horas  
 **Dificultad**: Intermedio-Avanzado  
 **Prerequisitos**: Conocimientos básicos de Spring Boot, JPA y API REST
-
-## 🏆 Criterios de Evaluación
-
-- ✅ Implementación completa de CRUD
-- ✅ Uso correcto de DTOs para cada operación
-- ✅ Mappers funcionando correctamente
-- ✅ Endpoints REST siguiendo convenciones
-- ✅ Manejo básico de errores
-- ✅ Código limpio y bien estructurado
-- ✅ Funcionalidad probada con Postman

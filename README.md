@@ -58,79 +58,17 @@ Este proyecto se desarrolló para estudiantes de la Tecnicatura Universitaria en
 
 ## 🛠️ Arquitectura del Proyecto
 
-### 🏛️ Estructura de Capas
+### 🏛️ Estructura de Paquetes Sugerida
 
 ```
 src/main/java/com/example/
 ├── Controller/          # Capa de presentación (REST endpoints)
-│   └── MovieController.java
 ├── Service/            # Capa de lógica de negocio
-│   └── MovieService.java
 ├── Repository/         # Capa de acceso a datos
-│   └── MovieRepository.java
 ├── Entity/            # Modelo de dominio
-│   └── Movie.java
 ├── DTO/               # Objetos de transferencia de datos
-│   ├── MovieCreateDTO.java
-│   ├── MovieUpdateDTO.java
-│   └── MovieResponseDTO.java
 ├── Mapper/            # Conversión entre capas
-│   └── MovieMapper.java
 └── Main.java          # Clase principal
-```
-
-## 📦 Patrón DTO Implementado
-
-### 🔄 DTOs por Operación
-
-- **MovieCreateDTO**: Contiene todos los campos necesarios para crear una película
-- **MovieUpdateDTO**: Contiene todos los campos para actualizar una película existente  
-- **MovieResponseDTO**: Expone solo información básica (id, title, genre) al cliente
-
-### 🎯 Beneficios del Patrón DTO
-
-- **Separación de responsabilidades**: Los DTOs encapsulan solo los datos necesarios
-- **Seguridad**: No expone campos internos de la entidad
-- **Flexibilidad**: Diferentes DTOs para diferentes operaciones
-- **Optimización**: Reduce la transferencia de datos innecesarios
-
-## 🔄 Mapper Pattern
-
-### 📋 Métodos Implementados
-
-- `toResponseDTO(Movie)`: Convierte Entity a DTO de respuesta
-- `toEntity(MovieCreateDTO)`: Convierte DTO de creación a Entity
-- `updateEntity(Movie, MovieUpdateDTO)`: Actualiza Entity existente con datos del DTO
-
-### ✅ Ventajas
-
-- **Conversión limpia**: Métodos estáticos centralizados
-- **Reutilización**: Mismo mapper para diferentes operaciones
-- **Mantenibilidad**: Lógica de conversión en un solo lugar
-
-## 🗃️ Persistencia de Datos
-
-### 🏪 Spring Data JPA
-
-- **Repository automático**: Hereda métodos CRUD de JpaRepository
-- **Métodos adicionales**: `existsById()` para validaciones
-- **Configuración por convención**: Anotaciones JPA estándar
-- **Base de datos H2**: En memoria para desarrollo y pruebas
-
-### 📊 Modelo de Entidad
-
-```java
-@Entity
-public class Movie {
-    @Id @GeneratedValue
-    private Long id;
-    private String title;
-    private String genre;
-    private int releaseYear;
-    private String director;
-    private int durationInMinutes;
-    private String description;
-}
 ```
 
 ## 🌐 API REST
@@ -155,10 +93,7 @@ public class Movie {
 ## 🧪 Testing
 
 ### 🛠️ Herramientas Recomendadas
-
 - **Postman**: Para pruebas manuales de API
-- **cURL**: Para pruebas desde línea de comandos
-- **Browser**: Para endpoints GET simples
 
 ### ✅ Casos de Prueba
 
@@ -190,37 +125,6 @@ public class Movie {
 - **JPA/Hibernate**: ORM y mapeo objeto-relacional
 - **H2 Database**: Base de datos en memoria
 - **CRUD Operations**: Operaciones básicas de base de datos
-
-## 🔧 Configuración y Ejecución
-
-### ⚙️ Requisitos Previos
-
-- Java 17+
-- Maven 3.6+
-- IDE (IntelliJ IDEA, Eclipse, VS Code)
-
-### 🚀 Ejecución
-
-```bash
-# Clonar el proyecto
-git clone [repository-url]
-
-# Navegar al directorio
-cd movie-api
-
-# Ejecutar con Maven
-mvn spring-boot:run
-
-# O ejecutar el JAR
-mvn clean package
-java -jar target/movie-api-1.0.0.jar
-```
-
-### 🌐 Acceso
-
-- **URL Base**: `http://localhost:8080`
-- **Endpoints**: `/movies/*`
-- **Base de datos H2**: `http://localhost:8080/h2-console`
 
 ## 👨‍💻 Autor
 
