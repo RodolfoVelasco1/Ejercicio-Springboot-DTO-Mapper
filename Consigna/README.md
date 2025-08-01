@@ -42,13 +42,13 @@ com.example/
 
 ## 🌐 Endpoints Requeridos
 
-| Método HTTP | Endpoint | Descripción | DTO Entrada | DTO Salida |
-|-------------|----------|-------------|-------------|------------|
-| `GET` | `/movies` | Obtener todas las películas | - | `MovieResponseDTO[]` |
-| `GET` | `/movies/{id}` | Obtener película por ID | - | `MovieResponseDTO` |
-| `POST` | `/movies` | Crear nueva película | `MovieCreateDTO` | `MovieResponseDTO` |
-| `PUT` | `/movies/{id}` | Actualizar película completa | `MovieUpdateDTO` | `MovieResponseDTO` |
-| `DELETE` | `/movies/{id}` | Eliminar película | - | `String` |
+| Método HTTP | Endpoint | Descripción |
+|-------------|----------|-------------|
+| `GET` | `/movies` | Obtener todas las películas |
+| `GET` | `/movies/{id}` | Obtener película por ID |
+| `POST` | `/movies` | Crear nueva película |
+| `PUT` | `/movies/{id}` | Actualizar película completa |
+| `DELETE` | `/movies/{id}` | Eliminar película |
 
 ## 🎯 Operaciones CRUD Detalladas
 
